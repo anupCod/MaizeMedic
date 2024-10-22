@@ -1,0 +1,88 @@
+import React,{useState} from "react";
+import axios from 'axios';
+import { NavLink,useNavigate } from "react-router-dom";
+
+function Signup() {
+  const [formData,setFormData] = useState({ username: "", email: "", createdPassword: "", confirmedPassword: "" })
+  const [error,setError] = useState("")
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (formData.createdPassword != formData.confirmedPassword){
+      setError("Passwords dont match");
+      return;
+    }
+
+    axios.post('http://127.0.0.1:8000/api/accounts/signup/',{
+      username: formData.username,
+      email:formData.email,
+      createdPassword:formData.createdPassword,
+      confirmedPassword:formData.confirmedPassword,
+    }).then(()=>{
+      navigate('/login');
+      console.log(`message sent successfully`)
+    }).catch((error) => {
+      setError("Signup failed. Please try again");
+      console.error(error.response.data);
+    })
+  }
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  }
+
+  return (
+    <>
+      <section className="min-w-full h-screen ">
+        <form className="shadow-neumorphism w-[24rem] flex flex-col gap-3 p-7 my-8 mx-auto bg-white" onSubmit={handleSubmit}>
+          <h3 className="font-bold text-primary text-2xl">Signup</h3>
+          <p>Please enter your details</p>
+          <input
+            type="text"
+            name="username"
+            placeholder="Username"
+            className="border-[1px]  border-secondary border-solid px-3 text-sm py-[0.6rem] rounded-md outline-none"
+            value={formData.username} // Bind value to state
+            onChange={handleChange} // Handle input change
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            className="border-[1px]  border-secondary border-solid px-3 text-sm py-[0.6rem] rounded-md outline-none"
+            value={formData.email} // Bind value to state
+            onChange={handleChange} // Handle input change
+          />
+          <input
+            type="password"
+            name="createdPassword"
+            placeholder="Create Password"
+            className="border-[1px] border-secondary border-solid text-sm px-3 py-[0.6rem] rounded-md outline-none"
+            value={formData.createdPassword} // Bind value to state
+            onChange={handleChange} // Handle input change
+          />
+          <input
+            type="password"
+            name="confirmedPassword"
+            placeholder="Confirm Password"
+            className="border-[1px] border-secondary border-solid text-sm px-3 py-[0.6rem] rounded-md outline-none"
+            value={formData.confirmedPassword} // Bind value to state
+            onChange={handleChange} // Handle input change
+          />
+          <input
+            type="submit"
+            value="Sign Up"
+            className="border-0 cursor-pointer  py-[0.4rem] bg-primary font-semibold text-white rounded-md"
+          />
+          {error && <p className="text-red-500">{error}</p>} {/* Display error if exists */}
+          <p>
+            Already have an account?<NavLink to="/login" className="font-semibold cursor-pointer text-primary text-xm">  Login Here</NavLink>
+          </p>
+        </form>
+      </section>
+    </>
+  );
+}
+
+export default Signup;
