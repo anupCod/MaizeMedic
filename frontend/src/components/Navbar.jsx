@@ -2,8 +2,9 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import usericon from "../assets/user.svg";
 import logoImg from "../images/logo.png";
+import userProfile from '../images/youtubeProfile.png'
 
-function Navbar() {
+function Navbar({loginStatus}) {
   return (
     <>
       <header className="w-full shadow-neumorphism bg-slate-50  border-b-[1px] ">
@@ -56,11 +57,28 @@ function Navbar() {
               </NavLink>
             </li>
           </ul>
-          <div className="flex">
-            <img src={usericon} alt="user-icon" />
-            <NavLink to='/login' className="cursor-pointer font-bold text-md text-primary">
-              Login
-            </NavLink>
+          <div className="flex items-center gap-1">
+            {
+              loginStatus ? (
+                <>
+                  <img src={userProfile} alt="userProfile-icon" className="w-[2rem] h-[2rem] rounded-full border-2 border-red-600" />
+                  <p className="cursor-pointer font-semibold text-md text-blue-600">
+                    Profile
+                  </p>
+                </>
+              ): 
+              (
+                <>
+                  <img src={usericon} alt="user-icon" />
+                  <NavLink to='/login' className="cursor-pointer font-bold text-md text-primary">
+                    Login
+                  </NavLink>
+                </>
+              )
+            }
+            
+
+            
           </div>
         </nav>
       </header>

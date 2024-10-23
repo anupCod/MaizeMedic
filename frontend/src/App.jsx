@@ -7,19 +7,25 @@ import Home from './components/Home'
 import About from './components/About'
 import Work from './components/Work'
 import Maizedis from './components/Maizedis'
+import { useState } from 'react'
 
 function App() {
+  const [loginStatus, setLoginStatus] = useState(false)
+
+  const handleLoginSuccess = () => {
+    setLoginStatus(true)
+  }
 
   return (
     <Router>
       <div className="container h-screen w-full overflow-hidden">
-        <Navbar />
+        <Navbar loginStatus={loginStatus} />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home loginStatus={loginStatus}/>} />
           <Route path="/about" element={<About />} />
           <Route path="/how-it-works" element={<Work />} />
           <Route path="/maize-disease" element={<Maizedis />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login loginStatus={loginStatus} onLoginSuccess={handleLoginSuccess} />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
       </div>
