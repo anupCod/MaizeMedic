@@ -1,0 +1,113 @@
+.container{
+ 
+  padding-left: 30px;
+}
+.maize-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 30px;
+  padding-bottom: 5px;
+}
+.maize-heading img {
+  height:55px;
+  width:60px;
+}
+.maize-heading h1 {
+  font-size: 25px;
+  font-weight: 600;
+}
+.maize-heading1 {
+  margin-top: 0;
+  padding: 0px 30px;
+  width: 80%;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+.link:hover {
+  color: white;
+}
+.categories{
+    padding: 30px 0px;
+    margin-bottom: 10px;
+   
+}
+.categories h1{
+    font-size: 20px;
+    font-weight: 600;
+   
+}
+.categories h2{
+    font-size: 16px;
+    font-weight: 400;
+     margin-top: 8px;
+}
+.contact-us { 
+    padding: 30px 0px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.contact-us form {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start;
+    width: 80%;
+}
+
+.contact-us input {
+    margin: 10px 0; 
+    padding: 8px;
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    font-size: 16px; 
+    background-color: white;
+    color: black; 
+    width: 100%;
+}
+
+.contact-us input[type="submit"] {
+    padding: 8px; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 50%;
+    background: none; 
+    color: black;
+    cursor: pointer;
+}
+
+.contact-us input:focus {
+    outline: none; 
+    border: 1px solid #ccc; 
+}
+
+.contact-us input[type="submit"]:hover {
+    background-color: #f8f9fa; 
+}
+
+.follow-us {
+  display: flex; /* Align text and icons in a row */
+  align-items: center; /* Center the items vertically */
+  gap: 12px; /* Space between text and icons */
+}
+
+.social-links {
+  display: flex; /* Display icons in a row */
+  gap: 10px; /* Add space between icons */
+}
+
+.social-icon {
+  font-size: 24px; /* Icon size */
+  color: black; /* Default icon color */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.social-icon:hover {
+  color: white; /* Change color to white on hover */
+}
+.follow-us h2{
+  margin-right: 8px;
+  font-weight: 500;
+}

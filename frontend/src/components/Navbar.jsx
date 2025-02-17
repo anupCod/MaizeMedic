@@ -7,7 +7,7 @@ import userProfile from '../images/youtubeProfile.png'
 function Navbar({loginStatus}) {
   return (
     <>
-      <header className="w-full shadow-neumorphism bg-slate-50  border-b-[1px] ">
+      <header className=" w-full shadow-neumorphism bg-slate-50  border-b-[1px] ">
         <nav className="flex justify-between items-center px-[2rem] py-[0.5rem] ">
           <div className="flex items-center">
             <img src={logoImg} alt="logo" className="w-10 h-10 rounded-full filter backdrop-brightness- backdrop-contrast-200 contrast-220 bg-black" />
