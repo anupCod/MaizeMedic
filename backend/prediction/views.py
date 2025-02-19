@@ -39,7 +39,12 @@ def predict_disease(request):
 
         # Clean up temporary image
         os.remove(image_path)
+<<<<<<< HEAD
 
         return Response([{'predicted_class': predicted_class}, disease_info[predicted_class]], status=status.HTTP_200_OK)
 
         # return Response({'predicted_class': predicted_class}, status=status.HTTP_200_OK)
+=======
+        return Response([{'predicted_class': predicted_class}, disease_info[predicted_class]], status=status.HTTP_200_OK)
+        """ return Response({'predicted_class': predicted_class}, status=status.HTTP_200_OK) """
+>>>>>>> 376a2c1 (New update added)

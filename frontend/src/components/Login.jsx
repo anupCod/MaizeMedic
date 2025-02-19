@@ -11,26 +11,24 @@ function Login({loginStatus,onLoginSuccess}) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    axios.post('http://127.0.0.1:8000/api/accounts/login/', {
-      email: formData.email, // Adjust based on how you authenticate
-      password: formData.password, // Adjust field name if necessary
-    })
-    .then((response) => {
-      // Save tokens to local storage or context
+    try{
+      const response = await axios.post('http://127.0.0.1:8000/api/accounts/login/', {
+        email: formData.email, // Adjust based on how you authenticate
+        password: formData.password, // Adjust field name if necessary
+      })
       console.log('Login successful:', response.data);
       onLoginSuccess()
-      navigate('/'); // Redirect to home or another page after successful login
-    })
-    .catch((error) => {
+      navigate('/');
+    }catch(error){
       if (error.response && error.response.data) {
         setError(error.response.data.error || "Login failed. Please try again.");
       } else {
         setError("An unexpected error occurred. Please try again.");
       }
       console.error(error);
-    });
+    };
   };
 
   return (

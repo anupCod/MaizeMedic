@@ -7,27 +7,27 @@ function Signup() {
   const [error,setError] = useState("")
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     if (formData.createdPassword != formData.confirmedPassword){
       setError("Passwords dont match");
       return;
     }
-
-    axios.post('http://127.0.0.1:8000/api/accounts/signup/',{
-      username: formData.username,
-      email:formData.email,
-      createdPassword:formData.createdPassword,
-      confirmedPassword:formData.confirmedPassword,
-    }).then(()=>{
+    try {
+      const response = axios.post('http://127.0.0.1:8000/api/accounts/signup/',{
+        username: formData.username,
+        email:formData.email,
+        createdPassword:formData.createdPassword,
+        confirmedPassword:formData.confirmedPassword,
+      })
+      console.log(response.data)
       navigate('/login');
       console.log(`message sent successfully`)
-    }).catch((error) => {
+    }catch (error) {
       setError("Signup failed. Please try again");
       console.error(error.response.data);
-    })
+    }
   }
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }

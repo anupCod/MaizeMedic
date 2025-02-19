@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import usericon from "../assets/user.svg";
 import logoImg from "../images/logo.png";
 import userProfile from '../images/youtubeProfile.png'
+import navList from "./Navlinks";
 
 function Navbar({loginStatus}) {
   return (
@@ -16,46 +17,20 @@ function Navbar({loginStatus}) {
             </h3>
           </div>
           <ul className="flex gap-8">
-            <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  isActive ? "font-bold text-black-600" : ""
-                }
-              >
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/about"
-                className={({ isActive }) =>
-                  isActive ? "font-bold text-black-600" : ""
-                }
-              >
-                About
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/how-it-works"
-                className={({ isActive }) =>
-                  isActive ? "font-bold text-black-600" : ""
-                }
-              >
-                How it works
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/maize-disease"
-                className={({ isActive }) =>
-                  isActive ? "font-bold text-black-600" : ""
-                }
-              >
-                Maize disease
-              </NavLink>
-            </li>
+            {
+              navList.map((navLink,index) => (
+                <li key={index+1}>
+                  <NavLink
+                    to={navLink.navUrl}
+                    className={({ isActive }) =>
+                      isActive ? "font-bold text-black-600" : ""
+                    }
+                  >
+                    {navLink.navElement}
+                  </NavLink>
+                </li>
+              ))
+            }
           </ul>
           <div className="flex items-center gap-1">
             {
@@ -76,9 +51,6 @@ function Navbar({loginStatus}) {
                 </>
               )
             }
-            
-
-            
           </div>
         </nav>
       </header>

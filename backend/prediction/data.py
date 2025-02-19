@@ -19,4 +19,8 @@ disease_info = {
         "prevention": "Maintain proper crop rotation, ensure balanced fertilization, and regularly monitor for early signs of disease or pest infestations.",
         "treatment": "No treatment needed; continue best agronomic practices to maintain plant health."
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 376a2c1 (New update added)
