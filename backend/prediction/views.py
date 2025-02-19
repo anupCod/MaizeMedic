@@ -7,6 +7,7 @@ from rest_framework.decorators import api_view
 from rest_framework import status
 from .load_model import load_model
 from .utils import preprocess_image
+from .data import disease_info
 # Load the model (make sure this is loaded once and used globally if needed)
 model_path = os.path.join(settings.BASE_DIR, 'model.pth')
 model = load_model(model_path)
@@ -39,4 +40,6 @@ def predict_disease(request):
         # Clean up temporary image
         os.remove(image_path)
 
-        return Response({'predicted_class': predicted_class}, status=status.HTTP_200_OK)
+        return Response([{'predicted_class': predicted_class}, disease_info[predicted_class]], status=status.HTTP_200_OK)
+
+        # return Response({'predicted_class': predicted_class}, status=status.HTTP_200_OK)
