@@ -8,7 +8,7 @@ import About from './components/About'
 import Work from './components/Work'
 import Maizedis from './components/Maizedis'
 import { useState } from 'react'
-
+import Footer from './components/Footer'
 function App() {
   const [loginStatus, setLoginStatus] = useState(false)
 
@@ -18,7 +18,7 @@ function App() {
 
   return (
     <Router>
-      <div className="container h-screen w-full overflow-hidden">
+      <div className="container h-screen w-full " >
         <Navbar loginStatus={loginStatus} />
         <Routes>
           <Route path="/" element={<Home loginStatus={loginStatus}/>} />
@@ -28,6 +28,7 @@ function App() {
           <Route path="/login" element={<Login loginStatus={loginStatus} onLoginSuccess={handleLoginSuccess} />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
+        <Footer />
       </div>
     </Router>
   )
