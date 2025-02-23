@@ -18,7 +18,7 @@ function App() {
 
   return (
     <Router>
-      <div className="container h-screen w-full  " >
+      <div className="container h-screen w-full " >
         <Navbar loginStatus={loginStatus} />
         <Routes>
           <Route path="/" element={<Home loginStatus={loginStatus}/>} />
