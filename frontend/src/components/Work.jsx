@@ -1,6 +1,7 @@
 import React from 'react'
 import workInfo from './Workdetails'
 
+
 function Work() {
   return (
     <>
@@ -15,11 +16,18 @@ function Work() {
                   <span className='bg-white text-center w-16 py-4 relative bottom-[2.5rem] rounded-full text-primary font-bold text-lg'>
                     {index+1}
                   </span>
-                  <h3 className='mb-3 font-semibold'>{work.header}</h3>
-                  <p className='text-center'>{work.description}</p>
+                  <h1 className='mb-4 font-bold'>{work.header}</h1>
+                  <p className='text-center '>{work.description}</p>
+                  <div className="flex-grow"></div>
+                  <div > <img src={work.src} alt="fghg" className="w-20 h-20 object-contain" /></div>
+                 
                 </div>
+
               ))
+
+              
             }
+          
           </div>
         </main>
       </section>
