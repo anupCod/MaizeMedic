@@ -9,6 +9,7 @@ import Work from './components/Work'
 import Maizedis from './components/Maizedis'
 import { useState } from 'react'
 import Footer from './components/Footer'
+import MaizeDisease from './components/MaizeDisease'
 function App() {
   const [loginStatus, setLoginStatus] = useState(false)
 
@@ -24,9 +25,11 @@ function App() {
           <Route path="/" element={<Home loginStatus={loginStatus}/>} />
           <Route path="/about" element={<About />} />
           <Route path="/how-it-works" element={<Work />} />
-          <Route path="/maize-disease" element={<Maizedis />} />
+          <Route path="/maize-disease" element={<MaizeDisease />} />
           <Route path="/login" element={<Login loginStatus={loginStatus} onLoginSuccess={handleLoginSuccess} />} />
           <Route path="/signup" element={<Signup />} />
+        
+
         </Routes>
         <Footer />
       </div>
