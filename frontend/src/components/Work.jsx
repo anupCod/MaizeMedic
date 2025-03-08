@@ -1,6 +1,4 @@
-import React from 'react'
 import workInfo from './Workdetails'
-
 
 function Work() {
   return (
@@ -12,8 +10,8 @@ function Work() {
             {
               workInfo.map((work,index) =>
               (
-                <div className="pt-3 pb-5 px-1 flex flex-col items-center bg-white w-[20%] h-[80%] relative" key={index}>
-                  <span className='bg-white text-center w-16 py-4 relative bottom-[2.5rem] rounded-full text-primary font-bold text-lg'>
+                <div className="pt-3 mt-2 pb-5 px-1 flex flex-col items-center bg-white w-[20%] h-[80%] relative" key={index}>
+                  <span className='bg-white text-center w-20 h-20 py-4  relative bottom-[2.5rem] rounded-full  border border-green-700  text-success font-bold text-lg'>
                     {index+1}
                   </span>
                   <h1 className='mb-4 font-bold'>{work.header}</h1>

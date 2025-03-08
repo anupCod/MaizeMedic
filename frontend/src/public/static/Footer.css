@@ -88,24 +88,24 @@
 }
 
 .follow-us {
-  display: flex; /* Align text and icons in a row */
-  align-items: center; /* Center the items vertically */
-  gap: 12px; /* Space between text and icons */
+  display: flex;
+  align-items: center;
+  gap: 12px; 
 }
 
 .social-links {
-  display: flex; /* Display icons in a row */
-  gap: 10px; /* Add space between icons */
+  display: flex;
+  gap: 10px; 
 }
 
 .social-icon {
-  font-size: 24px; /* Icon size */
-  color: black; /* Default icon color */
-  transition: color 0.3s ease; /* Smooth color transition */
+  font-size: 24px; 
+  color: black;
+  transition: color 0.3s ease;
 }
 
 .social-icon:hover {
-  color: white; /* Change color to white on hover */
+  color: white; 
 }
 .follow-us h2{
   margin-right: 8px;
