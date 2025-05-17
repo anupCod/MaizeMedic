@@ -5,19 +5,19 @@ import logoImg from "../images/logo.png";
 import userProfileImg from "../images/youtubeProfile.png";
 import navList from "./Navlinks";
 import { useUser } from "./UserContext";
-
+import '../public/static/Navbar.css'
 function Navbar() {
   const { user, accessToken, setUser, setAccessToken } = useUser();
   const [showPopup, setShowPopup] = useState(false);
   const navigate = useNavigate();
-  // Toggle the popup when username is clicked
+  
   const handleUsernameClick = () => {
     setShowPopup((prev) => !prev);
   };
 
-  // Logout functionality
+  
   const handleLogout = () => {
-    // Clear localStorage and reset user state
+  
     localStorage.clear();
     setUser(null);
     setAccessToken(null);
@@ -26,7 +26,7 @@ function Navbar() {
   };
 
   return (
-    <header className="w-full shadow-neumorphism bg-slate-50 border-b-[1px] relative">
+    <header className="w-full  shadow-neumorphism bg-slate-50 border-b-[1px] relative ">
       <nav className="flex w-full justify-between items-center px-[2rem] py-[0.5rem]">
         <div className="flex items-center">
           <img
@@ -68,7 +68,7 @@ function Navbar() {
                 {user ? user.username : "Guest"}
               </p>
 
-              {/* Popup Modal */}
+           
               {showPopup && (
                 <div className="absolute right-0 top-full mt-2 w-48 p-4 bg-white rounded shadow-lg z-10">
                   <ul className="space-y-2">
