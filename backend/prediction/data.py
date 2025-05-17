@@ -1,10 +1,10 @@
 disease_info = {
-    "Common_Rust": {
+    "Common Rust": {
         "symptoms": "Reddish-brown pustules appear on both sides of the leaves, often surrounded by yellow halos. Severe infections can lead to premature leaf death.",
         "prevention": "Plant resistant maize varieties, ensure proper field sanitation, and use crop rotation to break disease cycles.",
         "treatment": "Apply fungicides like strobilurins or triazoles at early infection stages for effective control."
     },
-    "Gray_Leaf_Spot": {
+    "Gray Leaf Spot": {
         "symptoms": "Small, rectangular, gray to tan lesions with a narrow brown border appear on lower leaves first and gradually spread upwards.",
         "prevention": "Use disease-resistant hybrids, improve air circulation by avoiding dense planting, and manage crop residues to reduce fungal spores.",
         "treatment": "Apply fungicides like azoxystrobin or propiconazole at early symptom onset to prevent spread."

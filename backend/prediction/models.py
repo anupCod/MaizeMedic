@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 
+#This is the initial CNN model, not needed now that we've got resnet
 class MaizeModelV2(nn.Module):
   def __init__(self,input_shape:int,hidden_units:int,output_shape:int):
     super().__init__()
