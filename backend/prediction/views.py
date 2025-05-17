@@ -29,6 +29,6 @@ def predict_disease(request):
             outputs = model(img_tensor)
             _, predicted = torch.max(outputs, 1)
             predicted_label = class_names[predicted.item()]
-
+            
         return Response([{'predicted_class': predicted_label}, disease_info[predicted_label]], status=status.HTTP_200_OK)
     return Response({"error": "No image provided"}, status=400)
