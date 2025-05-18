@@ -7,6 +7,7 @@ import NavbarTop from '../components/NavbarTop';
 import { useAuth } from '../context/AuthContext';
 import { useNavigation } from '@react-navigation/native';
 import { useImage } from '../context/ImageContext';
+import { globalStyles } from '../styles';
 
 const HomeScreen = () => {
     const navigation = useNavigation()
@@ -50,8 +51,8 @@ const HomeScreen = () => {
                     </View>
                 ) : (
                     <View style={styles.imagePreview}>
-                        <Icon name="cloud-upload" size={50} color="green" />
-                        <Text>No file choosen yet..</Text>
+                        <Icon name="cloud-upload" size={45} color="green" />
+                        <Text style={{fontFamily:'Roboto_500Medium'}}>No file choosen yet..</Text>
                     </View>
                 )}
 
@@ -63,14 +64,14 @@ const HomeScreen = () => {
                                 underlayColor="#165904"
                                 style={styles.HomeBtn}
                             >
-                                <Text style={styles.buttonText}>Pick a Image</Text>
+                                <Text style={[globalStyles.extraText,{color:'white'}]}>Pick a Image</Text>
                             </TouchableHighlight>
                             <TouchableHighlight
                                 onPress={() => navigation.navigate('predictImg')}
                                 underlayColor="#165904"
                                 style={styles.HomeBtn}
                             >
-                                <Text style={styles.buttonText}>Predict Now</Text>
+                                <Text style={[globalStyles.extraText,{color:'white'}]}>Predict Now</Text>
                             </TouchableHighlight>
                         </View>
                     ) :
@@ -81,7 +82,7 @@ const HomeScreen = () => {
                                 underlayColor="#165904"
                                 style={styles.HomeBtn}
                             >
-                                <Text style={styles.buttonText}>Pick a Image</Text>
+                                <Text style={[globalStyles.extraText,{color:'white'}]}>Pick a Image</Text>
                             </TouchableHighlight>
                         </View>
                     )
@@ -125,15 +126,15 @@ const styles = StyleSheet.create({
         backgroundColor: 'green',
         padding: 10,
         borderRadius: 8,
-        height: 44,
-        width: 120,
-        marginRight: 15,
+        height: 42,
+        width: 112,
+        marginHorizontal: 8,
         justifyContent: 'center',
         alignItems: 'center',
     },
     buttonText: {
         color: '#ffffff',
-        fontSize: 14,
+        fontSize: 13,
         fontWeight: 'bold',
     },
 })

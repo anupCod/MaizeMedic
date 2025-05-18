@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, Image, StyleSheet, Text, View } from 'react-native';
 import { useImage } from '../context/ImageContext';
 import axios from 'axios';
+import { useHistory } from '../context/HistoryContext';
+import { globalStyles } from '../styles';
 
 const PredictImg = () => {
     const {imageUri} = useImage()
+    const {addHistory} = useHistory()
     const [prediction,setPrediction] = useState(null)
     const [loading,setLoading] = useState(true)
 
@@ -23,11 +26,23 @@ const PredictImg = () => {
                     type:"image/jpeg",
                 })
                 
-                const response = await axios.post("https://guiding-hamster-live.ngrok-free.app/api/predict/",formData,{
+                const response = await axios.post("https://f737-103-224-106-14.ngrok-free.app/api/predict/",formData,{
                     headers:{"Content-Type":"multipart/form-data"},
                 })
                 console.log(response.data)
                 setPrediction(response.data)
+                // Add history after prediction is fetched
+                if (response.data) {
+                    addHistory({
+                        date : new Date().toISOString().split('T')[0],
+                        time : new Date().toISOString().split('T')[1].split('.')[0],
+                        imgUri : imageUri,
+                        predicted_class: response.data[0]?.predicted_class,
+                        prevention: response.data[1]?.prevention,
+                        symptoms: response.data[1]?.symptoms,
+                        treatment: response.data[1]?.treatment,
+                    });
+                }
             } catch (error) {
                 console.error("Error fetching prediction:",error)
                 alert("Failed to get Prediction")
@@ -48,20 +63,20 @@ const PredictImg = () => {
                 prediction && (
                     <View>
                         <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',marginBottom:20}}>
-                            <Text style={styles.mainheader}>Prediction:</Text>
-                            <Text style={styles.predictedValue}>{prediction[0]?.predicted_class}</Text>
+                            <Text style={[globalStyles.heading,{fontSize:17}]}>Prediction:</Text>
+                            <Text style={[globalStyles.body,{fontSize:15,marginLeft:2}]}>{prediction[0]?.predicted_class}</Text>
                         </View>
                         <View>
-                            <Text style={styles.header}>Prevention:</Text>
-                            <Text style={styles.predictedDesc}>{prediction[1]?.prevention}</Text>
+                            <Text style={[globalStyles.heading,{marginBottom:5}]}>Prevention:</Text>
+                            <Text style={[globalStyles.body,styles.predictedDesc]}>{prediction[1]?.prevention}</Text>
                         </View>
                         <View>
-                            <Text style={styles.header}>Symptoms:</Text>
-                            <Text style={styles.predictedDesc}>{prediction[1]?.symptoms}</Text>
+                            <Text style={[globalStyles.heading,{marginBottom:5}]}>Symptoms:</Text>
+                            <Text style={[globalStyles.body,styles.predictedDesc]}>{prediction[1]?.symptoms}</Text>
                         </View>
                         <View>
-                            <Text style={styles.header}>Treatment:</Text>
-                            <Text style={styles.predictedDesc}>{prediction[1]?.treatment}</Text>
+                            <Text style={[globalStyles.heading,{marginBottom:5}]}>Treatment:</Text>
+                            <Text style={[globalStyles.body,styles.predictedDesc]}>{prediction[1]?.treatment}</Text>
                         </View>
                     </View>
                 )
@@ -76,12 +91,6 @@ const styles = StyleSheet.create({
         fontSize:18,
         fontWeight:'bold',
     },
-    header:{
-        color:'green',
-        fontSize:18,
-        fontWeight:600,
-        marginBottom:5,
-    },
     predictedValue:{
         fontSize:18,
         marginLeft:4,
@@ -89,8 +98,9 @@ const styles = StyleSheet.create({
     predictedDesc:{
         marginBottom:15,
         textAlign:'justify',
-        fontSize:15,
     }
 })
 
 export default PredictImg;
+
+

@@ -1,6 +1,5 @@
-import React from 'react';
-
 import { StyleSheet, Text, View,ImageBackground} from 'react-native';
+import { globalStyles } from '../styles';
 
 const Banner = () => {
     return (
@@ -8,8 +7,8 @@ const Banner = () => {
             <ImageBackground source={require('../images/background.gif')} resizeMode="cover" style={styles.imageBackground}>
                 <View style={styles.overlay}></View>
                 <View style={styles.bannerBox}>
-                    <Text style={styles.title}>Protecting Maize</Text>
-                    <Text style={styles.subtitle}>Empowering Farmers with Smart Disease Detection</Text>
+                    <Text style={[globalStyles.heading,styles.title]}>Protecting Maize</Text>
+                    <Text style={[globalStyles.body,styles.subtitle]}>Empowering Farmers with Smart Disease Detection</Text>
                 </View>
             </ImageBackground>
         </View>
@@ -25,7 +24,6 @@ const styles = StyleSheet.create({
         height:150,
         borderRadius:10,
         overflow:'hidden',
-
     },
     overlay:{
         ...StyleSheet.absoluteFillObject,
@@ -34,18 +32,17 @@ const styles = StyleSheet.create({
     bannerBox:{
         position:'absolute',
         height:150,
-        padding:10,
-        width:'70%',
+        padding:13,
+        width:'80%',
         justifyContent:'center',
     },
     title:{
-        fontSize:22,
-        fontWeight:'bold',
         color:'white',
-        marginVertical:5,
+        marginVertical:1
     },
     subtitle:{
         color:'white',
+        fontSize:13,
     }
 })
 

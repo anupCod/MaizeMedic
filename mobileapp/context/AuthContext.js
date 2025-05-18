@@ -12,13 +12,24 @@ export const AuthProvider = ({children}) => {
             
             if (storedUser) {
                 setUser(JSON.parse(storedUser));
+                setLoginStatus(true)
             }
         };
         fetchUserData();
     }, []);
 
+    const handleLogout = async () => {
+        try {
+            await AsyncStorage.removeItem("user");
+            setUser(null);
+            setLoginStatus(false);
+        } catch (error) {
+            console.error("Error clearing user data:", error);
+        }
+    };
+
     return(
-        <AuthContext.Provider value={{loginStatus,setLoginStatus,user}}>
+        <AuthContext.Provider value={{loginStatus,setLoginStatus,user,setUser,handleLogout}}>
             {children}
         </AuthContext.Provider>
     )

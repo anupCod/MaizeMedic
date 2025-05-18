@@ -1,6 +1,4 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
 import PredictImg from '../routes/PredictImg'
 
 const Stack = createNativeStackNavigator()
@@ -13,6 +11,5 @@ const PredictNavigator = () => {
     );
 }
 
-const styles = StyleSheet.create({})
 
 export default PredictNavigator;

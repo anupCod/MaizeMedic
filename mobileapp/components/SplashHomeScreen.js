@@ -1,6 +1,7 @@
 import React,{useEffect} from 'react';
 import { StyleSheet, View ,Image,Text} from 'react-native';
 import * as SplashScreen from 'expo-splash-screen'
+import { globalStyles } from '../styles';
 
 const SplashHomeScreen = () => {
     useEffect(() => {
@@ -12,7 +13,7 @@ const SplashHomeScreen = () => {
     return (
         <View style={styles.container}>
             <Image source={require('../images/logo.png')} style={styles.icon} />
-            <Text style={styles.appName}>MaizeMedic</Text>
+            <Text style={[globalStyles.heading,styles.appName]}>MaizeMedic</Text>
         </View>
     );
 }
@@ -31,8 +32,8 @@ const styles = StyleSheet.create({
     },
     appName: {
         fontSize: 24,
-        fontWeight: 'bold',
         color: 'white',
+        fontWeight:'700',
     },
 })
 

@@ -41,5 +41,4 @@ def predict_disease(request):
         os.remove(image_path)
 
         return Response([{'predicted_class': predicted_class}, disease_info[predicted_class]], status=status.HTTP_200_OK)
-
-        # return Response({'predicted_class': predicted_class}, status=status.HTTP_200_OK)
+       # return Response({'predicted_class': predicted_class}, status=status.HTTP_200_OK)

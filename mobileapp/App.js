@@ -7,9 +7,22 @@ import SplashHomeScreen from './components/SplashHomeScreen';
 import AuthNavigator from './navigation/AuthNavigator';
 import { AuthProvider } from './context/AuthContext';
 import { ImageStateProvider } from './context/ImageContext';
+import { HistoryProvider } from './context/HistoryContext';
+import { useFonts } from 'expo-font';
+import {Poppins_400Regular, Poppins_700Bold,Poppins_600SemiBold, Poppins_500Medium} from '@expo-google-fonts/poppins'
+import {Roboto_400Regular} from '@expo-google-fonts/roboto'
+import {Lato_400Regular} from '@expo-google-fonts/lato'
 
 export default function App() {
   const [appLoaded, setAppLoaded] = useState(false);
+  const [fontsLoaded] = useFonts({
+    Poppins_400Regular,
+    Roboto_400Regular,
+    Poppins_700Bold,
+    Poppins_600SemiBold,
+    Lato_400Regular,
+    Poppins_500Medium,
+  })
 
   useEffect(() => {
     setTimeout(() => {
@@ -17,21 +30,25 @@ export default function App() {
     }, 5000);
   }, []);
 
-  if (!appLoaded) {
+  if (!appLoaded || !fontsLoaded) {
     return <SplashHomeScreen />;
   }
+
+  
 
   return (
     <AuthProvider>
       <ImageStateProvider>
-        <SafeAreaProvider>
-          <SafeAreaView style={styles.container}>
-            <NavigationContainer>
-              <StatusBar style="dark" />
-              <AuthNavigator />
-            </NavigationContainer>
-          </SafeAreaView>
-        </SafeAreaProvider>
+        <HistoryProvider>
+          <SafeAreaProvider>
+            <SafeAreaView style={styles.container}>
+              <NavigationContainer>
+                <StatusBar style="dark" />
+                <AuthNavigator />
+              </NavigationContainer>
+            </SafeAreaView>
+          </SafeAreaProvider>
+        </HistoryProvider>
       </ImageStateProvider>
     </AuthProvider>
   );

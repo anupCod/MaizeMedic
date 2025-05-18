@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-&@!g=+lfo*$mp5!krb$oa$-2@thb+fn^zgy$@lwj6rx5(k1met
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS=['192.168.16.100','127.0.0.1','guiding-hamster-live.ngrok-free.app']
+ALLOWED_HOSTS=['192.168.16.100','127.0.0.1','guiding-hamster-live.ngrok-free.app','f737-103-224-106-14.ngrok-free.app']
 
 # Application definition
 
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'accounts',
     'prediction',
+    'contact',
 ]
 
 REST_FRAMEWORK = {

@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { StyleSheet, View,Button,Image } from 'react-native';
+import { View,Button,Image } from 'react-native';
 import * as ImagePicker from 'expo-image-picker'
 import { useImage } from '../context/ImageContext';
 import { useNavigation } from '@react-navigation/native';
@@ -35,7 +34,6 @@ const ClickImage = () => {
     );
 }
 
-const styles = StyleSheet.create({})
 
 export default ClickImage;
 
