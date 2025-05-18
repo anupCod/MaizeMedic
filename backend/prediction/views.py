@@ -1,44 +1,34 @@
 # views.py (in Django app)
-import os
 import torch
-from django.conf import settings
-from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from django.http import JsonResponse
+from .utils import load_model, get_transform
+from PIL import Image
+import io
+from pathlib import Path
+from torchvision import transforms
 from rest_framework import status
-from .load_model import load_model
-from .utils import preprocess_image
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 from .data import disease_info
+
 # Load the model (make sure this is loaded once and used globally if needed)
-model_path = os.path.join(settings.BASE_DIR, 'model.pth')
-model = load_model(model_path)
+MODEL_PATH = Path("prediction/model/resnet_model.pth")
+model = load_model(MODEL_PATH)
+transform = get_transform()
+
+class_names = ["Blight", "Common Rust", "Gray Leaf Spot", "Healthy"]
 
 @api_view(['POST'])
 def predict_disease(request):
-    if request.method == 'POST':
-        # Get image file from request
-        image_file = request.FILES['image']
-        image_path = os.path.join(settings.MEDIA_ROOT, 'temp_image.jpg')
+    if request.method == "POST" and request.FILES.get("image"):
+        image_file = request.FILES["image"]
+        image = Image.open(image_file).convert("RGB")
+        img_tensor = transform(image).unsqueeze(0)  # add batch dim
 
-        # Save the image temporarily
-        with open(image_path, 'wb') as f:
-            for chunk in image_file.chunks():
-                f.write(chunk)
-
-        # Preprocess the image
-        image = preprocess_image(image_path)
-
-        # Predict
         with torch.no_grad():
-            outputs = model(image)
+            outputs = model(img_tensor)
             _, predicted = torch.max(outputs, 1)
-
-        # Classify based on your model's classes
-        class_names = ['Blight', 'Common_Rust', 'Gray_Leaf_Spot', 'Healthy']
-        # class_names = ['Common Rust', 'Gray Leaf Spot', 'Blight', 'Healthy']
-        predicted_class = class_names[predicted.item()]
-
-        # Clean up temporary image
-        os.remove(image_path)
-
-        return Response([{'predicted_class': predicted_class}, disease_info[predicted_class]], status=status.HTTP_200_OK)
-       # return Response({'predicted_class': predicted_class}, status=status.HTTP_200_OK)
+            predicted_label = class_names[predicted.item()]
+            
+        return Response([{'predicted_class': predicted_label}, disease_info[predicted_label]], status=status.HTTP_200_OK)
+    return Response({"error": "No image provided"}, status=400)

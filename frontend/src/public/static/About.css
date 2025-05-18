@@ -1,0 +1,18 @@
+.about-page{
+    background-color: rgb(203, 203, 203);
+    height:500px;
+    width:55%;
+    margin:100px 310px;
+    align-items:center;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+
+}
+.aboutcontent{
+    align-items: center;
+    text-align: center;
+    padding-top: 50px;
+}
+.aboutcontent p {
+    margin-bottom: 30px; 
+  }
