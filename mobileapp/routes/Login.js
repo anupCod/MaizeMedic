@@ -19,7 +19,7 @@ const Login = () => {
     const handleSubmit = async() =>{
         try {
             await AsyncStorage.removeItem("user");
-            const response =await axios.post('https://f737-103-224-106-14.ngrok-free.app/api/accounts/login/',{
+            const response =await axios.post('https://3b12-103-224-106-14.ngrok-free.app/api/accounts/login/',{
                 email:formData.email,
                 password:formData.password,
             },{

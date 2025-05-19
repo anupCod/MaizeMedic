@@ -1,10 +1,12 @@
-import { Alert, TouchableHighlight } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
+import { Alert, TouchableHighlight, TouchableOpacity } from 'react-native';
+import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import { globalStyles } from '../styles';
 import { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 const Contact = () => {
+    const navigation = useNavigation()
     const [formData,setFormData] = useState({
         name:'',
         email:'',
@@ -23,7 +25,7 @@ const Contact = () => {
             return 
         }
         try {
-            const response = await fetch('https://f737-103-224-106-14.ngrok-free.app/api/contact/',{
+            const response = await fetch('https://3b12-103-224-106-14.ngrok-free.app/api/contact/',{
                 method:'POST',
                 headers:{
                     'Content-Type':'application/json',
@@ -44,6 +46,13 @@ const Contact = () => {
     }
     return (
         <View style={styles.container}>
+            <View style={{flexDirection:'row',alignItems:'center'}}>
+                <TouchableOpacity style={{ flexDirection: "row",alignItems:'center',paddingVertical:3 }} onPress={() => navigation.goBack()}>
+                        <MaterialCommunityIcons name="chevron-left" size={30} style={{ color: 'blue' }} />
+                        <Text style={[globalStyles.extraText, { fontSize: 17, color: 'blue', fontWeight: '500' }]}>profile</Text>
+                </TouchableOpacity>
+                
+            </View>
             <Text style={styles.header}>
                 Let's connect through <Text style={[globalStyles.heading,{color:'green'}]}>MaizeMedic</Text>
             </Text>
@@ -114,7 +123,7 @@ const styles = StyleSheet.create({
     textarea:{
         borderWidth:1,
         borderColor:'gray',
-        height:150,
+        height:140,
         borderRadius:7,
         marginBottom:20,
         paddingHorizontal:12,
@@ -123,7 +132,7 @@ const styles = StyleSheet.create({
     submitBtn:{
         borderWidth:1,
         borderColor:'gray',
-        height:48,
+        height:45,
         alignItems:'center',
         justifyContent:'center',
         backgroundColor:'green',

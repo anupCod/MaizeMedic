@@ -51,15 +51,15 @@ const Profile = () => {
 
     return (
         <>
-            <View style={{flexDirection:'row',alignItems:'center',backgroundColor:'lightgrey'}}>
-                <TouchableOpacity style={{ flexDirection: "row",alignItems:'center',paddingVertical:3 }} onPress={() => navigation.goBack()}>
-                        <MaterialCommunityIcons name="chevron-left" size={30} style={{ color: 'blue' }} />
-                        <Text style={[globalStyles.extraText, { fontSize: 17, color: 'blue', fontWeight: '500' }]}>Back</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: 'lightgrey' }}>
+                <TouchableOpacity style={{ flexDirection: "row", alignItems: 'center', paddingVertical: 3 }} onPress={() => navigation.goBack()}>
+                    <MaterialCommunityIcons name="chevron-left" size={30} style={{ color: 'blue' }} />
+                    <Text style={[globalStyles.extraText, { fontSize: 17, color: 'blue', fontWeight: '500' }]}>Back</Text>
                 </TouchableOpacity>
-                <Text style={[globalStyles.heading,{position:'absolute',left:'35%',color:'black',fontWeight:'600'}]}>Account Profile</Text>
+                <Text style={[globalStyles.heading, { position: 'absolute', left: '35%', color: 'black', fontWeight: '600' }]}>Account Profile</Text>
             </View>
             <View style={styles.profileContainer}>
-                
+
                 <View style={styles.profileDetail}>
                     <TouchableOpacity onPress={pickImage}>
                         <Image source={profileUri ? { uri: profileUri } : account.imgUrl} style={styles.profilePic} />
@@ -71,9 +71,9 @@ const Profile = () => {
                     <MaterialCommunityIcons name="account" style={styles.menuIcon} size={22} color="blue" />
                     <Text style={styles.menuText}>Account Information</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('diseaseInfo')}>
-                    <MaterialCommunityIcons name="ladybug" style={styles.menuIcon} size={22} color="black" />
-                    <Text style={styles.menuText}>Disease Information</Text>
+                <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('contact')}>
+                    <MaterialCommunityIcons name="email" style={styles.menuIcon} size={22} color="green" />
+                    <Text style={styles.menuText}>Contact Us</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.menuItem} onPress={() => {
                     navigation.navigate('Analytics')
