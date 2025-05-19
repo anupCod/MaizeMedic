@@ -65,7 +65,9 @@ function Home() {
       }));
       setShowResult(true); // Show the result box after successful prediction
     } catch (error) {
-      setError(error?.response?.data?.detail || error.message);
+      // setError(error?.response?.data?.detail || error.message);
+      alert("Please upload a valid image!");
+
     } finally {
       setLoading(false);
     }
