@@ -26,7 +26,7 @@ const PredictImg = () => {
                     type:"image/jpeg",
                 })
                 
-                const response = await axios.post("https://f737-103-224-106-14.ngrok-free.app/api/predict/",formData,{
+                const response = await axios.post("https://3b12-103-224-106-14.ngrok-free.app/api/predict/",formData,{
                     headers:{"Content-Type":"multipart/form-data"},
                 })
                 console.log(response.data)

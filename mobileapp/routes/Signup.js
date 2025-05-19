@@ -26,7 +26,7 @@ const Signup = ({navigation}) => {
             console.log('Payload:', payload);  // Log the payload to ensure it is correct
 
             const response = await axios.post(
-                'https://f737-103-224-106-14.ngrok-free.app/api/accounts/signup/',
+                'https://3b12-103-224-106-14.ngrok-free.app/api/accounts/signup/',
                 payload,
                 {
                     headers: {

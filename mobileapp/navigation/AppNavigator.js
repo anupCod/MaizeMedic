@@ -3,9 +3,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../routes/HomeScreen';
 import About from '../routes/About';
 import ClickImage from '../routes/ClickImage';
-import Contact from '../routes/Contact';
 import ScanButton from './ScanButton';
 import HistoryPage from '../routes/HistoryPage';
+import DiseaseInfo from '../routes/DiseaseInfo';
 
 const Tab = createBottomTabNavigator()
 
@@ -20,7 +20,7 @@ const AppNavigator = () => {
                     tabBarIcon: ({ color }) => (<MaterialCommunityIcons name="camera" color={color} size={22} />)
                 })}
                 component={ClickImage} />
-            <Tab.Screen name="contact" options={{ title: "Contact", tabBarIcon: ({ color }) => (<MaterialCommunityIcons name="phone" color={color} size={20} />) }} component={Contact} />
+            <Tab.Screen name="diseaseInfo" options={{ title: "Diseases", tabBarIcon: ({ color }) => (<MaterialCommunityIcons name="ladybug" color={color} size={20} />) }} component={DiseaseInfo} />
             <Tab.Screen name="history" options={{ title: "History", tabBarIcon: ({ color }) => (<MaterialCommunityIcons name="clipboard-text" color={color} size={20} />) }} component={HistoryPage} />
         </Tab.Navigator>
     );
