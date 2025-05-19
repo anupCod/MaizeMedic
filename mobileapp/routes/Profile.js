@@ -71,9 +71,9 @@ const Profile = () => {
                     <MaterialCommunityIcons name="account" style={styles.menuIcon} size={22} color="blue" />
                     <Text style={styles.menuText}>Account Information</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.menuItem}>
-                    <MaterialCommunityIcons name="cog" style={styles.menuIcon} size={22} color="black" />
-                    <Text style={styles.menuText}>Edit Profile</Text>
+                <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('diseaseInfo')}>
+                    <MaterialCommunityIcons name="ladybug" style={styles.menuIcon} size={22} color="black" />
+                    <Text style={styles.menuText}>Disease Information</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.menuItem} onPress={() => {
                     navigation.navigate('Analytics')

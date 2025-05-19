@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, StyleSheet, ScrollView, TouchableOpacity, View } from 'react-native';
+import { Text, ScrollView, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import LineChartComponent from '../components/LineChart';
 import PieChartComponent from '../components/PieChart';
@@ -26,8 +26,5 @@ const Analytics = () => {
     );
 };
 
-const styles = StyleSheet.create({
-
-});
 
 export default Analytics;

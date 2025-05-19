@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Dimensions, StyleSheet} from 'react-native';
+import { View, Text, Dimensions, StyleSheet } from 'react-native';
 import { PieChart } from 'react-native-chart-kit';
 
 import { useHistory } from '../context/HistoryContext';
@@ -21,19 +21,19 @@ const PieChartComponent = () => {
     }, {})
 
     const colorPalette = {
-        Blight: '#CA7F00',         // Burnt Orange
-        Common_Rust: '#871C1C',     // Rust Red
-        GrayLeafSpot: '#616161',  // Charcoal Gray
-        Healthy: '#43A047',        // Fresh Green
+        'Blight': '#CA7F00',         // Burnt Orange
+        'Common Rust': '#871C1C',     // Rust Red
+        'Gray Leaf Spot': '#616161',  // Charcoal Gray
+        'Healthy': '#43A047',        // Fresh Green
     };
 
     const pieData = Object.entries(classCounts).map(([name, count]) => ({
-        name,
+        name:name,  // Map camelCase to readable label
         population: count,
-        color: colorPalette[name] || '#888888',
+        color: colorPalette[name] || 'black',
         legendFontColor: '#7F7F7F',
         legendFontSize: 12,
-    }))
+    }));
     const chartConfig = {
         backgroundColor: '#e26a00',
         backgroundGradientFrom: '#fb8c00',
@@ -57,7 +57,7 @@ const PieChartComponent = () => {
     }
     return (
         <View style={{ flex: 1 }}>
-            <Text style={[globalStyles.extraText,{fontSize:15,textAlign:'center',marginTop:18}]}>Detected Conditions Overview</Text>
+            <Text style={[globalStyles.extraText, { fontSize: 15, textAlign: 'center', marginTop: 18 }]}>Detected Conditions Overview</Text>
             <PieChart data={pieData}
                 width={width - 20}
                 height={220}
